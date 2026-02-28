@@ -1,279 +1,315 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>病みかわテンプレート | YamiKawa Dream</title>
+  <style>
+    :root {
+      --bg-1: #0f0a1f;
+      --bg-2: #1c1033;
+      --pink: #ff6ec7;
+      --violet: #9d7bff;
+      --mint: #6ef7d7;
+      --text: #f9f4ff;
+      --muted: #c9b8e8;
+      --panel: rgba(29, 16, 56, 0.78);
+      --border: rgba(255, 255, 255, 0.15);
+      --shadow: 0 10px 30px rgba(255, 110, 199, 0.18);
+    }
 
-diff --git a/index.html b/index.html
-index 8b137891791fe96927ad78e64b0aad7bded08bdc..80a146c533d11ae44544b4a1435f7e9bac375931 100644
---- a/index.html
-+++ b/index.html
-@@ -1 +1,273 @@
-+<!DOCTYPE html>
-+<html lang="ja">
-+<head>
-+  <meta charset="UTF-8" />
-+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-+  <title>Yami Kawa Template</title>
-+  <style>
-+    :root {
-+      --bg-1: #120016;
-+      --bg-2: #2b0a3d;
-+      --text-main: #ffe5f8;
-+      --text-sub: #d7b8ea;
-+      --pink: #ff6fd8;
-+      --purple: #a66bff;
-+      --mint: #86ffe7;
-+      --danger: #ff4fa8;
-+      --card: rgba(255, 255, 255, 0.08);
-+      --stroke: rgba(255, 255, 255, 0.24);
-+      --shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-+    }
- 
-+    * {
-+      box-sizing: border-box;
-+    }
-+
-+    body {
-+      margin: 0;
-+      min-height: 100vh;
-+      font-family: "M PLUS Rounded 1c", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
-+      color: var(--text-main);
-+      background:
-+        radial-gradient(circle at 20% 10%, rgba(255, 111, 216, 0.28) 0%, transparent 40%),
-+        radial-gradient(circle at 80% 20%, rgba(134, 255, 231, 0.2) 0%, transparent 35%),
-+        linear-gradient(160deg, var(--bg-1), var(--bg-2) 60%, #0f0017 100%);
-+      overflow-x: hidden;
-+    }
-+
-+    body::before,
-+    body::after {
-+      content: "";
-+      position: fixed;
-+      inset: 0;
-+      pointer-events: none;
-+      z-index: -1;
-+    }
-+
-+    body::before {
-+      background: repeating-linear-gradient(
-+        0deg,
-+        rgba(255, 255, 255, 0.03),
-+        rgba(255, 255, 255, 0.03) 1px,
-+        transparent 1px,
-+        transparent 3px
-+      );
-+      mix-blend-mode: soft-light;
-+      opacity: 0.7;
-+    }
-+
-+    body::after {
-+      background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px);
-+      background-size: 22px 22px;
-+      opacity: 0.25;
-+    }
-+
-+    .container {
-+      width: min(1080px, 92%);
-+      margin: 0 auto;
-+      padding: 2rem 0 4rem;
-+    }
-+
-+    .hero {
-+      text-align: center;
-+      padding: 4.2rem 1.4rem;
-+      border: 1px solid var(--stroke);
-+      border-radius: 28px;
-+      background: linear-gradient(145deg, rgba(255, 111, 216, 0.12), rgba(166, 107, 255, 0.08));
-+      box-shadow: var(--shadow);
-+      position: relative;
-+      overflow: hidden;
-+    }
-+
-+    .hero::before,
-+    .hero::after {
-+      content: "";
-+      position: absolute;
-+      border-radius: 50%;
-+      filter: blur(14px);
-+      z-index: 0;
-+    }
-+
-+    .hero::before {
-+      width: 180px;
-+      height: 180px;
-+      top: -55px;
-+      left: -45px;
-+      background: rgba(255, 79, 168, 0.45);
-+    }
-+
-+    .hero::after {
-+      width: 210px;
-+      height: 210px;
-+      bottom: -80px;
-+      right: -65px;
-+      background: rgba(134, 255, 231, 0.35);
-+    }
-+
-+    .badge {
-+      display: inline-block;
-+      position: relative;
-+      z-index: 1;
-+      border: 1px dashed rgba(255, 255, 255, 0.5);
-+      border-radius: 999px;
-+      padding: 0.35rem 0.9rem;
-+      font-size: 0.88rem;
-+      color: var(--mint);
-+      letter-spacing: 0.06em;
-+      margin-bottom: 1.2rem;
-+      background: rgba(0, 0, 0, 0.2);
-+    }
-+
-+    h1 {
-+      position: relative;
-+      z-index: 1;
-+      margin: 0;
-+      font-size: clamp(2rem, 5vw, 3.8rem);
-+      line-height: 1.2;
-+      text-shadow: 0 0 14px rgba(255, 111, 216, 0.5);
-+    }
-+
-+    .hero p {
-+      position: relative;
-+      z-index: 1;
-+      max-width: 640px;
-+      margin: 1rem auto 0;
-+      color: var(--text-sub);
-+      line-height: 1.8;
-+    }
-+
-+    .cta {
-+      margin-top: 1.8rem;
-+      display: flex;
-+      gap: 0.75rem;
-+      justify-content: center;
-+      flex-wrap: wrap;
-+    }
-+
-+    .btn {
-+      border: 1px solid var(--stroke);
-+      border-radius: 999px;
-+      padding: 0.7rem 1.3rem;
-+      color: var(--text-main);
-+      text-decoration: none;
-+      font-weight: 700;
-+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-+      background: rgba(255, 255, 255, 0.06);
-+    }
-+
-+    .btn:hover {
-+      transform: translateY(-2px);
-+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
-+      background: rgba(255, 255, 255, 0.12);
-+    }
-+
-+    .btn.primary {
-+      background: linear-gradient(90deg, var(--pink), var(--purple));
-+      border-color: transparent;
-+    }
-+
-+    .grid {
-+      margin-top: 2rem;
-+      display: grid;
-+      gap: 1rem;
-+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-+    }
-+
-+    .card {
-+      background: var(--card);
-+      border: 1px solid var(--stroke);
-+      border-radius: 20px;
-+      padding: 1rem;
-+      box-shadow: var(--shadow);
-+      backdrop-filter: blur(8px);
-+    }
-+
-+    .card h2 {
-+      margin-top: 0;
-+      font-size: 1rem;
-+      color: var(--mint);
-+      letter-spacing: 0.05em;
-+    }
-+
-+    .tag-list {
-+      list-style: none;
-+      padding: 0;
-+      margin: 0;
-+      display: flex;
-+      gap: 0.5rem;
-+      flex-wrap: wrap;
-+    }
-+
-+    .tag {
-+      border-radius: 999px;
-+      padding: 0.3rem 0.7rem;
-+      border: 1px solid rgba(255, 255, 255, 0.35);
-+      background: rgba(0, 0, 0, 0.2);
-+      font-size: 0.82rem;
-+    }
-+
-+    .heart {
-+      color: var(--danger);
-+      text-shadow: 0 0 10px rgba(255, 79, 168, 0.7);
-+    }
-+
-+    footer {
-+      text-align: center;
-+      margin-top: 2rem;
-+      color: #c9a9dc;
-+      font-size: 0.88rem;
-+      opacity: 0.95;
-+    }
-+  </style>
-+</head>
-+<body>
-+  <main class="container">
-+    <section class="hero">
-+      <span class="badge">病みかわテンプレート</span>
-+      <h1>かわいいだけじゃない、
-+        <br />
-+        <span class="heart">少しだけ壊れた</span>世界観。
-+      </h1>
-+      <p>
-+        「病み × かわいい」をテーマにした、ダークトーンのワンページテンプレートです。
-+        テキストと色味を差し替えるだけで、ポートフォリオ・自己紹介・推し活ページに使えます。
-+      </p>
-+      <div class="cta">
-+        <a class="btn primary" href="#">はじめる</a>
-+        <a class="btn" href="#">デザインを見る</a>
-+      </div>
-+    </section>
-+
-+    <section class="grid" aria-label="テンプレート情報">
-+      <article class="card">
-+        <h2>KEY COLORS</h2>
-+        <ul class="tag-list">
-+          <li class="tag">#ff6fd8</li>
-+          <li class="tag">#a66bff</li>
-+          <li class="tag">#86ffe7</li>
-+        </ul>
-+      </article>
-+      <article class="card">
-+        <h2>MOOD</h2>
-+        <ul class="tag-list">
-+          <li class="tag">ゆめかわ</li>
-+          <li class="tag">ダーク</li>
-+          <li class="tag">ネオン</li>
-+        </ul>
-+      </article>
-+      <article class="card">
-+        <h2>SECTION IDEA</h2>
-+        <ul class="tag-list">
-+          <li class="tag">プロフィール</li>
-+          <li class="tag">ギャラリー</li>
-+          <li class="tag">リンク集</li>
-+        </ul>
-+      </article>
-+    </section>
-+
-+    <footer>
-+      © 2026 Yami Kawa Template / edit freely
-+    </footer>
-+  </main>
-+</body>
-+</html>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: "M PLUS Rounded 1c", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+      min-height: 100vh;
+      background: radial-gradient(circle at 20% 20%, #3b2067 0, transparent 35%),
+                  radial-gradient(circle at 80% 80%, #2f1551 0, transparent 38%),
+                  linear-gradient(135deg, var(--bg-1), var(--bg-2));
+      overflow-x: hidden;
+    }
+
+    .noise::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 4px 4px;
+      mix-blend-mode: soft-light;
+      opacity: .3;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: min(1040px, 92%);
+      margin: 0 auto;
+      padding: 36px 0 80px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .logo {
+      font-size: clamp(1.1rem, 2.2vw, 1.45rem);
+      letter-spacing: .08em;
+      font-weight: 700;
+      text-shadow: 0 0 10px rgba(255, 110, 199, .55);
+    }
+
+    .chip {
+      background: rgba(255, 110, 199, .16);
+      color: #ffd0ef;
+      border: 1px solid rgba(255, 110, 199, .4);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: .9rem;
+    }
+
+    .hero {
+      border: 1px solid var(--border);
+      background: linear-gradient(165deg, rgba(255, 110, 199, .14), rgba(28,16,51,.5));
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: clamp(26px, 4vw, 42px);
+      backdrop-filter: blur(8px);
+      margin-bottom: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: -30% auto auto -5%;
+      width: 240px;
+      height: 240px;
+      background: radial-gradient(circle, rgba(255, 110, 199, .3), transparent 62%);
+      filter: blur(3px);
+      pointer-events: none;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.06;
+      text-wrap: balance;
+    }
+
+    .glitch {
+      color: var(--text);
+      text-shadow: 2px 0 var(--pink), -2px 0 var(--mint);
+      animation: flicker 2.2s infinite;
+    }
+
+    @keyframes flicker {
+      0%, 18%, 22%, 60%, 100% { opacity: 1; }
+      20%, 58% { opacity: .7; }
+      21%, 59% { opacity: .9; }
+    }
+
+    .lead {
+      margin: 0;
+      color: var(--muted);
+      max-width: 60ch;
+      line-height: 1.75;
+    }
+
+    .cta {
+      margin-top: 24px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      text-decoration: none;
+      color: #fff;
+      padding: 11px 18px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #ff57c3, #9b6bff);
+      box-shadow: 0 6px 20px rgba(255,87,195,.35);
+    }
+
+    .btn-sub {
+      border-color: rgba(255,255,255,.24);
+      background: rgba(255,255,255,.06);
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      background: var(--panel);
+      backdrop-filter: blur(6px);
+    }
+
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+      color: #ffd2f4;
+    }
+
+    .card p,
+    .card li { color: var(--muted); line-height: 1.7; }
+
+    .col-4 { grid-column: span 4; }
+    .col-8 { grid-column: span 8; }
+
+    ul { margin: 0; padding-left: 1.2rem; }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .tag {
+      font-size: .78rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(110,247,215,.12);
+      border: 1px solid rgba(110,247,215,.35);
+      color: #c5fff1;
+    }
+
+    .gallery {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 8px;
+    }
+
+    .tile {
+      aspect-ratio: 1 / 1;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,110,199,.55), transparent 50%),
+        radial-gradient(circle at 75% 68%, rgba(110,247,215,.3), transparent 45%),
+        linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+    }
+
+    footer {
+      margin-top: 28px;
+      color: #b7a4da;
+      text-align: center;
+      font-size: .9rem;
+    }
+
+    .float {
+      position: fixed;
+      right: 3%;
+      bottom: 4%;
+      font-size: 1.5rem;
+      opacity: .78;
+      animation: bob 3s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 1;
+      filter: drop-shadow(0 0 10px rgba(255,110,199,.5));
+    }
+
+    @keyframes bob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @media (max-width: 860px) {
+      .col-4, .col-8 { grid-column: span 12; }
+      .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+  </style>
+</head>
+<body class="noise">
+  <div class="container">
+    <header class="topbar">
+      <div class="logo">☾ YAMI KAWA ✧ TEMPLATE</div>
+      <div class="chip">Free HTML Template</div>
+    </header>
+
+    <section class="hero">
+      <h1><span class="glitch">病みかわ</span>な世界へようこそ</h1>
+      <p class="lead">
+        ダークでメルヘン、ちょっと不安定でかわいい。
+        ポートフォリオ、プロフィール、配信告知ページなどに使える
+        「病みかわ」テイストの1ページテンプレートです。
+      </p>
+      <div class="cta">
+        <a href="#about" class="btn btn-primary">はじめる</a>
+        <a href="#custom" class="btn btn-sub">カスタマイズ例</a>
+      </div>
+    </section>
+
+    <main class="grid">
+      <section class="card col-4" id="about">
+        <h2>🖤 Profile</h2>
+        <p>名前、肩書き、SNSリンクを入れて、最初の自己紹介ブロックに。</p>
+        <div class="tag-list">
+          <span class="tag">#illustration</span>
+          <span class="tag">#streamer</span>
+          <span class="tag">#portfolio</span>
+        </div>
+      </section>
+
+      <section class="card col-8" id="custom">
+        <h2>🎀 Custom Tips</h2>
+        <ul>
+          <li>テーマカラーは <code>--pink</code> と <code>--violet</code> を変更。</li>
+          <li>フォントを好きな「丸ゴシック」系に置き換え。</li>
+          <li>セクションを増やして、予定表や作品一覧を掲載。</li>
+        </ul>
+      </section>
+
+      <section class="card col-8">
+        <h2>🫧 Gallery Mock</h2>
+        <p>画像を入れる場所のイメージです。実際の作品画像に置き換えて使えます。</p>
+        <div class="gallery">
+          <div class="tile"></div>
+          <div class="tile"></div>
+          <div class="tile"></div>
+        </div>
+      </section>
+
+      <section class="card col-4">
+        <h2>✉ Contact</h2>
+        <p>メールやSNSのDM導線をここに。</p>
+        <ul>
+          <li>X: @your_account</li>
+          <li>Instagram: @your_account</li>
+          <li>Mail: hello@example.com</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      2026 YamiKawa Template — edit freely / 商用利用時は各素材のライセンスをご確認ください。
+    </footer>
+  </div>
+
+  <div class="float">🩹</div>
+</body>
+</html>
